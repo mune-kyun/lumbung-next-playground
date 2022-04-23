@@ -2,6 +2,8 @@ interface propsInterface {
   url: string;
 }
 
+const url = "https://api.thecatapi.com/v1/images/search";
+
 const GettoServerSideProps = (props: propsInterface) => {
   const element = <div className="text-5xl font-bold">{props.url}</div>;
 
@@ -14,22 +16,6 @@ const GettoServerSideProps = (props: propsInterface) => {
   );
 };
 
-export async function getServerSideProps() {
-  const url = "https://api.thecatapi.com/v1/images/search";
-
-  const imgUrl = await fetch(url)
-    .then((res) => {
-      if (res.status == 200) return res.json();
-    })
-    .then((res) => {
-      return res[0].url;
-    });
-
-  return {
-    props: {
-      url: imgUrl,
-    },
-  };
-}
+// TODO: GET SERVERSIDEPROPS
 
 export default GettoServerSideProps;

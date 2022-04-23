@@ -4,11 +4,12 @@ import type { AppProps } from "next/app";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <div>navbar</div>
+      {
+        // TODO: NAVBAR FOOTER
+      }
       <div className="min-h-screen flex flex-col relative">
         <Component {...pageProps} />
       </div>
-      <div>footer</div>
     </>
   );
 }

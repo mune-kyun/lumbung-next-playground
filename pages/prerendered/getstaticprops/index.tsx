@@ -2,6 +2,8 @@ interface propsInterface {
   url: string;
 }
 
+const url = "https://api.thecatapi.com/v1/images/search";
+
 const GettoStaticProps = (props: propsInterface) => {
   const element = <div className="text-5xl font-bold">{props.url}</div>;
 
@@ -14,23 +16,6 @@ const GettoStaticProps = (props: propsInterface) => {
   );
 };
 
-export async function getStaticProps() {
-  const url = "https://api.thecatapi.com/v1/images/search";
-
-  const imgUrl = await fetch(url)
-    .then((res) => {
-      if (res.status == 200) return res.json();
-    })
-    .then((res) => {
-      return res[0].url;
-    });
-
-  return {
-    props: {
-      url: imgUrl,
-    },
-    revalidate: 10,
-  };
-}
+// TODO: GETSTATICPROPS
 
 export default GettoStaticProps;
